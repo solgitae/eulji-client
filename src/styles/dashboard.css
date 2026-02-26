@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ── Scrollbar utilities ── */
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    overscroll-behavior-x: none;
+}
+
+.scrollbar-thin {
+    &::-webkit-scrollbar {
+        width: 0px;
+        height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #3a3a3c;
+        border-radius: 99px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #4a4a4c;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

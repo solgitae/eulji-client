@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+/* ============================================
+   Linear-style Semantic Token System
+   LCH color space · Dark-first
+   ──────────────────────────────────────────
+   🎨 Change these 2 values to re-theme:
+      --hue-base    → Neutral/chrome tint
+      --hue-accent  → Primary brand color
+   ============================================ */
+:root {
+  /* ── Theme Seeds (Light) ── */
+  --hue-base: 220;     /* Linear의 차가운 뉴트럴 계열 */
+  --hue-accent: 250;   /* 인디고/퍼플 브랜드 톤 */
+
+  /* ── Layout ── */
+  --sidebar-width: 244px;
+  --sidebar-width-collapsed: 64px;
+  --topbar-height: 48px;
+  --detail-panel-width: 280px;
+
+  /* ── Radius ── */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* ── Typography ── */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 30px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+
+  /* ── Spacing ── */
+  --size-0: 0px;
+  --size-1: 4px;
+  --size-2: 8px;
+  --size-3: 12px;
+  --size-4: 16px;
+  --size-5: 20px;
+  --size-6: 24px;
+  --size-8: 32px;
+  --size-10: 40px;
+  --size-12: 48px;
+  --size-16: 64px;
+
+  /* ── Motion ── */
+  --duration-fast: 100ms;
+  --duration-normal: 150ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Light Theme Surface ── */
+  --color-bg-primary:    lch(97% 2 var(--hue-base));  /* 앱 전체 배경 */
+  --color-bg-secondary:  lch(94% 2 var(--hue-base));  /* 카드/패널 기본 */
+  --color-bg-tertiary:   lch(90% 3 var(--hue-base));  /* 서브 패널 */
+  --color-bg-quaternary: lch(86% 4 var(--hue-base));  /* 강조 패널 */
+  --color-bg-hover:      lch(86% 4 var(--hue-base) / 0.4);
+  --color-bg-active:     lch(82% 5 var(--hue-base) / 0.7);
+
+  /* Inverse surface (Light에서 Dark 미리보기 용) */
+  --color-bg-inverse:        lch(6% 2 220);
+  --color-bg-inverse-hover:  lch(98% 2 220 / 0.05);
+  --color-text-inverse:      lch(96% 2 220);
+
+  /* ── Border (Light) ── */
+  --color-border:        lch(86% 4 var(--hue-base));
+  --color-border-strong: lch(78% 4 var(--hue-base));
+  --color-border-focus:  #5E6AD2; /* Linear 인디고 계열 포커스 */
+
+  /* ── Text (Light) ── */
+  --color-text-primary:   lch(20% 4 var(--hue-base));
+  --color-text-secondary: lch(35% 4 var(--hue-base));
+  --color-text-tertiary:  lch(50% 3 var(--hue-base));
+  --color-text-disabled:  lch(65% 3 var(--hue-base));
+  --color-text-on-accent: lch(98% 2 var(--hue-base));
+
+  /* ── Icon (Light) ── */
+  --color-icon:           lch(35% 3 var(--hue-base));
+  --color-icon-secondary: lch(55% 3 var(--hue-base));
+
+  /* ── Accent (Light) ── */
+  --color-accent:        lch(62% 35 var(--hue-accent)); /* #5E6AD2 근사 */
+  --color-accent-hover:  lch(58% 38 var(--hue-accent));
+  --color-accent-muted:  lch(94% 12 var(--hue-accent)); /* soft pill/tag 배경 */
+  --color-row-selected:  lch(92% 4 var(--hue-base));
+
+  /* ── Inquiry ── */
+  --color-inquiry:        lch(100% 0.01 296.81);
+  --color-inquiry-hover:  lch(89.18% 0.01 296.81);
+  --color-inquiry-stroke: lch(78.21% 21.89 94.44);
+
+  /* ── Status ── */
+  --color-status-in-progress:    lch(55% 50 270);
+  --color-status-in-progress-bg: lch(55% 50 270 / 0.1);
+  --color-status-done:           lch(55% 50 150);
+  --color-status-done-bg:        lch(55% 50 150 / 0.1);
+  --color-status-active:         lch(55% 50 150);
+  --color-status-active-bg:      lch(55% 50 150 / 0.1);
+  --color-status-pending:        lch(85% 45 90);
+  --color-status-pending-bg:     lch(85% 45 90 / 0.1);
+  --color-status-sold:           lch(55% 50 270);
+  --color-status-sold-bg:        lch(55% 50 270 / 0.1);
+
+  /* ── Priority ── */
+  --color-priority-urgent:   lch(50% 65 30);
+  --color-priority-high:     lch(60% 60 60);
+  --color-priority-high-bg:  lch(60% 60 60 / 0.1);
+  --color-priority-medium:   lch(85% 45 90);
+  --color-priority-low:      lch(40% 3 var(--hue-base));
+
+  /* ── Feedback ── */
+  --color-feedback-error:   lch(50% 65 30);
+  --color-feedback-warning: lch(68% 55 60);
+  --color-feedback-success: lch(55% 50 150);
+  --color-feedback-info:    lch(55% 50 270);
+
+  /* ── Danger ── */
+  --color-danger:        lch(42% 55 30);
+  --color-danger-bg:     lch(58% 55 30 / 0.05);
+  --color-danger-border: lch(58% 55 30 / 0.2);
+
+  /* ── Chart Series ── */
+  --color-chart-1: #5E6AD2;                 /* 메인 인디고 */  /*[web:7][web:10]*/
+  --color-chart-2: lch(55% 48 150);         /* green */
+  --color-chart-3: lch(62% 52 60);          /* amber */
+  --color-chart-4: lch(52% 55 30);          /* red */
+  --color-chart-5: lch(55% 38 220);         /* sky blue */
+  --color-chart-6: lch(52% 40 310);         /* purple */
+  --color-chart-7: lch(52% 20 var(--hue-base)); /* neutral */
+  --color-chart-grid: lch(12% 4 var(--hue-base) / 0.06);
+  --color-chart-axis: lch(42% 3 var(--hue-base));
+
+  /* ── Shadow (Light) ── */
+  --shadow-card:
+    0 0 0 1px lch(12% 4 var(--hue-base) / 0.06),
+    0 4px 12px lch(0% 0 0 / 0.06);
+  --shadow-elevated:
+    0 0 0 1px lch(12% 4 var(--hue-base) / 0.06),
+    0 8px 24px lch(0% 0 0 / 0.08);
+
+  /* ── Derived (Tailwind compat) ── */
+  --background: var(--color-bg-primary);
+  --foreground: var(--color-text-primary);
+  color-scheme: light;
+}
+
+/* ─────────────────────────────────────────────
+   Dark Theme
+   ───────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* ── Theme Seeds (Dark) ── */
+    --hue-base: 220;
+
+    /* ── Surface (Dark) ── */
+    --color-bg-primary:    lch(6% 2 var(--hue-base));   /* 앱 기본 배경 */
+    --color-bg-secondary:  lch(10% 2 var(--hue-base));  /* 카드/패널 */
+    --color-bg-tertiary:   lch(14% 3 var(--hue-base));  /* 서브 패널 */
+    --color-bg-quaternary: lch(18% 4 var(--hue-base));  /* 강조 패널 */
+    --color-bg-hover:      lch(98% 2 var(--hue-base) / 0.06);
+    --color-bg-active:     lch(98% 2 var(--hue-base) / 0.1);
+
+    /* Inverse Surface (Dark에서 Light 미리보기 용) */
+    --color-bg-inverse:        lch(97% 2 0);
+    --color-bg-inverse-hover:  lch(12% 4 0 / 0.04);
+    --color-text-inverse:      lch(20% 4 0);
+
+    /* ── Border (Dark) ── */
+    --color-border:        lch(18% 3 var(--hue-base));
+    --color-border-strong: lch(26% 3 var(--hue-base));
+    --color-border-focus:  #5E6AD2;
+
+    /* ── Text (Dark) ── */
+    --color-text-primary:   lch(96% 2 var(--hue-base));
+    --color-text-secondary: lch(82% 4 var(--hue-base));
+    --color-text-tertiary:  lch(68% 4 var(--hue-base));
+    --color-text-disabled:  lch(45% 3 var(--hue-base));
+    --color-text-on-accent: lch(98% 2 var(--hue-base));
+
+    /* ── Icon (Dark) ── */
+    --color-icon:           lch(82% 4 var(--hue-base));
+    --color-icon-secondary: lch(55% 3 var(--hue-base));
+
+    /* ── Accent (Dark) ── */
+    --color-accent:        lch(70% 35 var(--hue-accent));
+    --color-accent-hover:  lch(66% 38 var(--hue-accent));
+    --color-accent-muted:  lch(20% 15 var(--hue-accent));
+    --color-row-selected:  lch(14% 4 var(--hue-base));
+
+    /* ── Danger (Dark) ── */
+    --color-danger:        lch(50% 65 30);
+    --color-danger-bg:     lch(50% 65 30 / 0.05);
+    --color-danger-border: lch(50% 65 30 / 0.2);
+
+    /* ── Shadow (Dark) ── */
+    --shadow-card:
+      0 0 0 1px lch(10% 2 var(--hue-base) / 0.7),
+      0 14px 30px lch(0% 0 0 / 0.6);
+    --shadow-elevated:
+      0 0 0 1px lch(10% 2 var(--hue-base) / 0.7),
+      0 18px 40px lch(0% 0 0 / 0.65);
+
+    --color-inquiry:       lch(0% 0 0);
+    --color-inquiry-hover: lch(2.47% 0 296.81);
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   Tailwind Theme
+   ───────────────────────────────────────────── */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+
+    --text-xs: var(--font-size-xs);
+    --text-sm: var(--font-size-sm);
+    --text-base: var(--font-size-base);
+    --text-md: var(--font-size-md);
+    --text-lg: var(--font-size-lg);
+    --text-xl: var(--font-size-xl);
+    --text-2xl: var(--font-size-2xl);
+}
